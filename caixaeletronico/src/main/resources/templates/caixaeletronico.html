@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	    <title>Caixa Eletrônico</title>
+	    <link href="css/bootstrap.min.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="container">
+			<div class="jumbotron" align="center" style="margin-top: 50px;">
+				<form action="logout" method="post">
+					<button type="submit" class="btn btn-success">Logout</button>
+				</form>
+				<h1>Caixa Eletrônico</h1>
+				<form action="saca" method="post">
+					<div class="form-group">
+						<label for="valor">Valor</label>
+						<input type="text" class="form-control" id="valor" name="valor" placeholder="Valor"/>
+					</div>
+					<button type="submit" class="btn btn-success">Sacar</button>
+				</form>
+				<div th:if="${mensagem == '' or mensagem == null}">
+					<table class="table table-bordered table-striped table-hover">
+						<thead>
+							<tr>
+								<th>Notas de Cem</th>
+								<th>Notas de Cinquenta</th>
+								<th>Notas de Vinte</th>
+								<th>Notas de Dez</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><span th:text="${notasCem}"></span></td>
+								<td><span th:text="${notasCinquenta}"></span></td>
+								<td><span th:text="${notasVinte}"></span></td>
+								<td><span th:text="${notasDez}"></span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div th:if="${mensagem != ''}">
+					<span th:text="${mensagem}"></span>
+				</div>
+			</div>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	</body>
+</html>
